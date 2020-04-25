@@ -37,6 +37,5 @@ This extension provide the following command. Please write in settings.json.
 }
 ```
 
-
 # Credit
 This extension was created with reference to [vscode-extension-samples](https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample, "https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample").
