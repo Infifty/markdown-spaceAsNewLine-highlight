@@ -1,0 +1,55 @@
+{
+    "name": "markdown-spaceasnewline-highlight",
+	"displayName": "Markdown SpaceAsNewLine Highlight",
+	"description": "Display spaces at the end of each line int the markdown file",
+	"version": "1.0.0",
+	"publisher": "Infifty",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"repository": {
+		"url": ""
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:markdown"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"colors": [
+            {
+                "id": "myextension.onlyOneSpaceHighlight",
+                "description": "Border decoration color for only one space on each end line",
+                "defaults": {
+                    "dark": "#FF000055",
+                    "light": "#FF000055",
+                    "highContrast": "#FF000055"
+                }
+            },
+            {
+                "id": "myextension.twoOrMoreSpaceHighlight",
+                "description": "Border decoration color for two or more space on each end line",
+                "defaults": {
+                    "dark": "#FFFFFF",
+                    "light": "#FFFFFF",
+                    "highContrast": "#FFFFFF"
+                }
+            }
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^8.9.1",
+		"tslint": "^5.16.0",
+		"typescript": "^3.5.1",
+		"@types/vscode": "^1.32.0"
+	}
+}
