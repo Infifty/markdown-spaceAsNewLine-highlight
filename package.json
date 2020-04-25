@@ -9,7 +9,7 @@
 		"vscode": "^1.32.0"
 	},
 	"repository": {
-		"url": ""
+		"url": "https://github.com/Infifty/markdown-spaceAsNewLine-highlight"
 	},
 	"categories": [
 		"Other"
@@ -20,15 +20,6 @@
 	"main": "./out/extension.js",
 	"contributes": {
 		"colors": [
-            {
-                "id": "myextension.onlyOneSpaceHighlight",
-                "description": "Border decoration color for only one space on each end line",
-                "defaults": {
-                    "dark": "#FF000055",
-                    "light": "#FF000055",
-                    "highContrast": "#FF000055"
-                }
-            },
             {
                 "id": "myextension.twoOrMoreSpaceHighlight",
                 "description": "Border decoration color for two or more space on each end line",
