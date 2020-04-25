@@ -1,6 +1,6 @@
 # Markdown SpaceAsNewLine Highlight
 Highlight the space at the end of each line. It is convenient to use spaces as new line in markdown notation. (I've never seen a markdown file with spaces as new line except me)
-![Markdown SpaceAsNewLine Highlight](https://raw.github.com/Infifty/markdown-spaceAsNewLine-highlight/img/space-highlight.gif)
+![Markdown SpaceAsNewLine Highlight](https://raw.githubusercontent.com/Infifty/markdown-spaceAsNewLine-highlight/master/img/space-highlight.gif)
 
 # Feature
 - Highlight the space at the end of each line
