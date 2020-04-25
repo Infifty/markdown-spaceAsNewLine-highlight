@@ -9,13 +9,6 @@ export function activate(context: vscode.ExtensionContext) {
     let activeEditor = vscode.window.activeTextEditor;
     let md: string = 'markdown';
 
-    const onlyOneDecorationType = vscode.window.createTextEditorDecorationType({
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        overviewRulerLane: vscode.OverviewRulerLane.Left,
-        borderColor: { id: 'myextension.onlyOneSpaceHighlight' }
-    });
-
     const twoOrMoreDecorationType = vscode.window.createTextEditorDecorationType({
         borderWidth: '1px',
         borderStyle: 'solid',
@@ -31,21 +24,14 @@ export function activate(context: vscode.ExtensionContext) {
         if (!activeEditor) return;
 
         const text = activeEditor.document.getText();
-        const regEx_onlyOne = /([^\x20]+)(\x20{1}$)/gm;
         const regEx_twoOrMore = /([^\x20]+)(\x20{2,}$)/gm; // x20 is character encoding for half-width space
-        const onlyOne: vscode.DecorationOptions[] = [];
         const twoOrMore: vscode.DecorationOptions[] = [];
         let match;
 
-        while (match = regEx_onlyOne.exec(text)) {
-            console.log(typeof match);
-            onlyOne.push(getDecorationOption(match));
-        }
         while (match = regEx_twoOrMore.exec(text)) {
             twoOrMore.push(getDecorationOption(match));
         }
 
-        activeEditor.setDecorations(onlyOneDecorationType, onlyOne);
         activeEditor.setDecorations(twoOrMoreDecorationType, twoOrMore);
     }
 
