@@ -83,6 +83,7 @@ export function activate(context: vscode.ExtensionContext) {
     // fire when document will saved
     vscode.workspace.onWillSaveTextDocument(event => {
         console.log(event.document.languageId);
+        if (event.document.languageId !== md) return;
 
         let regExEndSpace = /([^\x20]+)(\x20{1,}$)/gm;
         let editor = vscode.window.activeTextEditor;
