@@ -2,9 +2,6 @@ import * as vscode from 'vscode';
 
 // this method is called when vs code is activated
 export function activate(context: vscode.ExtensionContext) {
-
-    console.log('decorator sample is activated');
-
     let timeout: NodeJS.Timer | undefined = undefined;
     let activeEditor = vscode.window.activeTextEditor;
     let md: string = 'markdown';
@@ -26,23 +23,22 @@ export function activate(context: vscode.ExtensionContext) {
         const text = activeEditor.document.getText();
         const regEx_twoOrMore = /([^\x20]+)(\x20{2,}$)/gm; // x20 is character encoding for half-width space
         const twoOrMore: vscode.DecorationOptions[] = [];
-        let match;
+        let match: RegExpExecArray | null;
 
         while (match = regEx_twoOrMore.exec(text)) {
-            twoOrMore.push(getDecorationOption(match));
+            twoOrMore.push(getRange(match));
         }
 
         activeEditor.setDecorations(twoOrMoreDecorationType, twoOrMore);
     }
 
-    function getDecorationOption(match: any): any {
+    function getRange(match: RegExpExecArray): any {
         if (!activeEditor) return;
 
         const startPos = activeEditor.document.positionAt(match.index + match[1].length);
         const endPos = activeEditor.document.positionAt(match.index + match[1].length + match[2].length);
-        const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'space' };
-
-        return decoration;
+        const range = new vscode.Range(startPos, endPos);
+        return range;
     }
 
     function triggerUpdateDecorations() {
@@ -82,42 +78,29 @@ export function activate(context: vscode.ExtensionContext) {
 
     // fire when document will saved
     vscode.workspace.onWillSaveTextDocument(event => {
-        console.log(event.document.languageId);
         if (event.document.languageId !== md) return;
 
         let regExEndSpace = /([^\x20]+)(\x20{1,}$)/gm;
         let editor = vscode.window.activeTextEditor;
-        let document = event.document;
-        let text = event.document.getText();
-        let docsTextList = text.split(/\n/);
-        let replacedDocsList = [];
         if (!editor) return;
 
-        for (let i in docsTextList) {
-            if (docsTextList[i].match(regExEndSpace)) {
-                console.log('space on end line matches : ' + docsTextList[i]);
-                replacedDocsList.push(docsTextList[i].replace(regExEndSpace, '$1  '));
-            } else {
-                replacedDocsList.push(docsTextList[i]);
-            }
+        let text = event.document.getText();
+        let match: RegExpExecArray | null;
+        let location: vscode.Range[] = [];
+        while (match = regExEndSpace.exec(text)) {
+            location.push(getRange(match));
         }
-        console.log(replacedDocsList);
-
-        let replacedDocs = replacedDocsList.join('\n');
-
-        let docsStartLineAt = document.lineAt(0);
-        let docsEndLineAt = document.lineAt(document.lineCount - 1);
-        let ranges = new vscode.Range(0, docsStartLineAt.range.start.character, document.lineCount - 1, docsEndLineAt.range.end.character);
 
         editor.edit(editBuilder => {
-                editBuilder.replace(ranges, replacedDocs);
+            for (let i = 0; i < location.length; i++) {
+            editBuilder.replace(location[i], "  ");
+            }
         });
     });
 
     // fire when language mode is changed
     vscode.languages.onDidChangeDiagnostics(event => {
         if (!activeEditor) return;
-        console.log(activeEditor.document.languageId);
 
         if (md === activeEditor.document.languageId) {
             triggerUpdateDecorations();

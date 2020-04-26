@@ -16,7 +16,7 @@ Highlight the space at the end of each line. It is convenient to use spaces as n
 5. Enjoy!
 
 # Command
-This extension provide the following command. Please write in settings.json.
+This extension provides the following command. Let's write in settings.json.
 ``` json
 {
     "workbench.colorCustomizations": {
@@ -28,7 +28,7 @@ This extension provide the following command. Please write in settings.json.
 # Note
 - If you're opening a markdown file but doesn't work, make sure the Language Mode in the bottom right corner of the editor is "Markdown".
 
-- If all the spaces at the end of each line are removed, you can avoid it by setting the following.
+- If all the spaces in each line have removed when you save a document, you can avoid it by the following setting.
 ``` json
 {
     "[markdown]": {
@@ -36,6 +36,9 @@ This extension provide the following command. Please write in settings.json.
     }
 }
 ```
+
+# Change Log
+[here](https://github.com/Infifty/markdown-spaceAsNewLine-highlight/blob/master/CHANGELOG.md, "https://github.com/Infifty/markdown-spaceAsNewLine-highlight/blob/master/CHANGELOG.md")
 
 # Credit
 This extension was created with reference to [vscode-extension-samples](https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample, "https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample").

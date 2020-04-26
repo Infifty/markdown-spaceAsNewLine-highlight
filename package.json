@@ -2,7 +2,7 @@
     "name": "markdown-spaceasnewline-highlight",
 	"displayName": "Markdown SpaceAsNewLine Highlight",
 	"description": "Display spaces at the end of each line int the markdown file",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"publisher": "Infifty",
 	"license": "MIT",
 	"engines": {
