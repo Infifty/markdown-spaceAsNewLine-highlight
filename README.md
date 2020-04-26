@@ -1,6 +1,6 @@
 # Markdown SpaceAsNewLine Highlight
 Highlight the space at the end of each line. It is convenient to use spaces as new line in markdown notation. (I've never seen a markdown file with spaces as new line except me)
-![Markdown SpaceAsNewLine Highlight](https://raw.githubusercontent.com/Infifty/markdown-spaceAsNewLine-highlight/master/img/space-highlight.gif)
+![Markdown SpaceAsNewLine Highlight](/img/space-highlight.gif)
 
 # Feature
 - Highlight the space at the end of each line
@@ -38,7 +38,7 @@ This extension provides the following command. Let's write in settings.json.
 ```
 
 # Change Log
-[here](https://github.com/Infifty/markdown-spaceAsNewLine-highlight/blob/master/CHANGELOG.md, "https://github.com/Infifty/markdown-spaceAsNewLine-highlight/blob/master/CHANGELOG.md")
+[here](/CHANGELOG.md "https://github.com/Infifty/markdown-spaceAsNewLine-highlight/blob/master/CHANGELOG.md")
 
 # Credit
 This extension was created with reference to [vscode-extension-samples](https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample, "https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample").
